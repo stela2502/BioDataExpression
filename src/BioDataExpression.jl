@@ -1,5 +1,8 @@
 module BioDataExpression
 
-# package code goes here
+  using SQLite, Gadfly
+  
+  include("BioData/Constructors.jl")
+  
 
 end # module
