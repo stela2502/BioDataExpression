@@ -21,7 +21,7 @@ function Normalize( data::SingleCellExpr, reads::Int64 )
   v = zeros(nm)
   r = zeros(nm)
   c = zeros(nm)
- 
+  ns = zeros(size(data.data)[1]) 
   for i = 1:size(data.data)[2]
     n = reads
     p = data.data[1:size(data.data)[1],i] / csum[i]
@@ -35,6 +35,7 @@ function Normalize( data::SingleCellExpr, reads::Int64 )
        end
     end
     val = map(round, p*n)
+    ns[i] = n
     ## now I likely have lost values
     ## which I want to set to -1
     t = countmap(vcat(p.nzind, val.nzind))
@@ -48,6 +49,7 @@ function Normalize( data::SingleCellExpr, reads::Int64 )
   end
   data.raw = data.data
   data.data = sparse( r[1:pos], c[1:pos] , v[1:pos] )
+  data.samples[:ResampleN] = ns
   #= build the new sparse matrix =#
 return (data)
 end
