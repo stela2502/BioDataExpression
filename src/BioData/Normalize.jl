@@ -31,7 +31,7 @@ function Normalize( data::SingleCellExpr, reads::Int64 )
        end
     elseif sum(map(round, p*reads)) < reads 
        while  sum(map(round, p*n)) < reads
-         n+=1
+         n += 1
        end
     end
     val = map(round, p*n)
@@ -40,11 +40,11 @@ function Normalize( data::SingleCellExpr, reads::Int64 )
     t = countmap(vcat(p.nzind, val.nzind))
     bad = collect(keys(t))[find(collect(values(t)) .== 1)]
     ## collect the Int64 > 0 values
-    ok = (pos+1):(pos+length(val.nzind)+length(bad));
-    v[ok] = vcat(collect(val.nzval), fill( -1, length(bad) );
-    r[ok] = vcat(val.nzind, bad);
-    c[ok] = fill(i, length(val.nzind) + length(bad));
-    pos = pos+length(val.nzind)+ length(bad);
+    ok = (pos+1):(pos+length(val.nzind)+length(bad))
+    v[ok] = vcat(collect(val.nzval), fill( -1, length(bad) ) )
+    r[ok] = vcat(val.nzind, bad)
+    c[ok] = fill(i, length(val.nzind) + length(bad))
+    pos = pos+length(val.nzind)+ length(bad)
   end
   data.raw = data.data
   data.data = sparse( r[1:pos], c[1:pos] , v[1:pos] )
