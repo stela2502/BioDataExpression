@@ -4,7 +4,7 @@ module BioDataExpression
   using Missings
   using StatsBase
   
-  export SingleCellExpr, BioData
+  export SingleCellExpr, BioData, Normalize, Zscore
   
   #= 
   println("the comment has not worked!")
