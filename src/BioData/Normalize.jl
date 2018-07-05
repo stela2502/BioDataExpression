@@ -21,7 +21,7 @@ function Normalize( data::SingleCellExpr, reads::Int64 )
   v = zeros(nm)
   r = zeros(nm)
   c = zeros(nm)
-  ns = zeros(size(data.data)[1]) 
+  ns = zeros(size(data.data)[2]) 
   for i = 1:size(data.data)[2]
     n = reads
     p = data.data[1:size(data.data)[1],i] / csum[i]
