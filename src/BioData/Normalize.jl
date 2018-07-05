@@ -1,4 +1,14 @@
-"Normalize Single Cell Data the hard way - resampling"
+"Normalize( data::SingleCellExpr, reads::Int64 )
+
+Normalize Single Cell Data the hard way - resampling
+
+This will add/update the samples column ResampleN where it will store the 
+final re-scale value used to obtain the total amount of requested reads in the sample.
+Lets see - possibly this value will be of use later on.
+
+This function will add -1 values for all sample/gene touples that had a value in the raw data, 
+but were set to 0 due to the resampling.
+"
 function Normalize( data::SingleCellExpr, reads::Int64 ) 
   
   if (typeof(data.raw) != Int64)

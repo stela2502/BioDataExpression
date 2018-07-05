@@ -3,8 +3,9 @@ module BioDataExpression
   using SQLite
   using Missings
   using StatsBase
+  using MultivariateStats
   
-  export SingleCellExpr, BioData, Normalize, Zscore
+  export SingleCellExpr, BioData, Normalize, Zscore, Log
   
   #= 
   println("the comment has not worked!")
@@ -18,6 +19,7 @@ module BioDataExpression
   include("BioData/Constructors.jl")
   include("BioData/Normalize.jl")
   include("BioData/Zscore.jl")
+  include("BioData/Log.jl")
   include("BioData/Show.jl")
     
 end # module
