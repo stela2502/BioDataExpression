@@ -1,6 +1,7 @@
 module BioDataExpression
 
   using SQLite
+  using Missings
   using StatsBase
   
   export SingleCellExpr, BioData

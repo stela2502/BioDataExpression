@@ -1,7 +1,7 @@
 
 
 function Base.show(io::IO, m::SingleCellExpr ) 
-  println(string( "And object of class " , typeof( m) , " with " , size( m.m)[2], " Cells and ", size(m.m)[1] , " Genes" )  )
+  println(string( "And object of class " , typeof( m) , " with " , size( m.data)[2], " Cells and ", size(m.data)[1] , " Genes" )  )
   if ( typeof(m.raw) != Int64 )
     println(string( "The data has been normalized" ))
   end
